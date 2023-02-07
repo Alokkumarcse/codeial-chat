@@ -1,10 +1,13 @@
 import { combineReducers } from "redux";
 
-import postReducer from './posts';
+import posts from './posts';
 
-/** creating combine reducer */
+/** 
+ * creating combine reducer, which is hold all reducers we have created.
+ * it is use in creating Redux store.
+*/
 export default combineReducers(
   {
-    postReducer,
+    posts
   }
 ) 
