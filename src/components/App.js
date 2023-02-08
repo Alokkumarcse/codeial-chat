@@ -2,6 +2,8 @@ import React from "react";
 
 import { connect } from "react-redux";
 
+import PorpsType from "prop-types";
+
 import { fetchPosts } from "../actions/posts";
 
 // importing component from separate file where all component exported
@@ -30,6 +32,10 @@ class App extends React.Component {
 	}
 }
 
+// we check here to ensure the our posts props is must be array type and required.
+App.PorpsType = {
+	posts: PorpsType.array.isRequired,
+};
 /**
  * map the state we want to pass as props to <App /> component using mapStateToProps(redux-store's state) callback method,
  * which is given as argument in connect() method.
