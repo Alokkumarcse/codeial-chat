@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 
 import "./index.css";
 import { App } from "./components/";
@@ -17,11 +17,11 @@ console.log(store.getState());
  * connect our App to store, for do this we need to Provide the store as props to <App />
  * using <Provider store={store}> </Provider> class which is imported form react-redux library.
  */
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-	<Provider store={store}>
-		<React.StrictMode>
+const root = ReactDOM.render(
+	<React.StrictMode>
+		<Provider store={store}>
 			<App />
-		</React.StrictMode>
-	</Provider>
+		</Provider>
+	</React.StrictMode>,
+	document.getElementById("root")
 );

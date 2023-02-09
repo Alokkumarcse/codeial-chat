@@ -1,5 +1,7 @@
 import React from "react";
 
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+
 import { connect } from "react-redux";
 
 import PorpsType from "prop-types";
@@ -7,15 +9,23 @@ import PorpsType from "prop-types";
 import { fetchPosts } from "../actions/posts";
 
 // importing component from separate file where all component exported
-import { PostsList } from "./";
+import { PostsList, Navbar } from "./";
+
+// make some dummy component to test how Router works
+const Login = () => {
+	return <h1>Login</h1>;
+};
+
+const Signup = () => {
+	return <h1>SignUp</h1>;
+};
+
+const Home = () => {
+	return <h1>Home</h1>;
+};
 
 class App extends React.Component {
-	/**
-	 * Fetch data from api in componentDidMount() method.
-	 * fetchPosts() method is thunk which is return a function which is preform api call and get data.
-	 * so, we need to invoke the fetchPosts() method inside dispatch() method. So dispatch() method
-	 * return an object to reducer.
-	 */
+	// dispatch fetchPosts action, is a redux thunk to fetch data via making api call.
 	componentDidMount() {
 		this.props.dispatch(fetchPosts());
 	}
@@ -24,10 +34,18 @@ class App extends React.Component {
 	render() {
 		const { posts } = this.props;
 		return (
-			<div>
-				<PostsList posts={posts} />
-				<PostsList Posts={posts} />
-			</div>
+			<Router>
+				<div>
+					<Navbar />
+					{/* adding route which is selected by router and render that component */}
+					<Route exact path="/" component={Home} />
+					<Route path="/signup" component={Signup} />
+					<Route path="/login" component={Login} />
+
+					<PostsList posts={posts} />
+					<PostsList Posts={posts} />
+				</div>
+			</Router>
 		);
 	}
 }
@@ -36,6 +54,7 @@ class App extends React.Component {
 App.PorpsType = {
 	posts: PorpsType.array.isRequired,
 };
+
 /**
  * map the state we want to pass as props to <App /> component using mapStateToProps(redux-store's state) callback method,
  * which is given as argument in connect() method.
