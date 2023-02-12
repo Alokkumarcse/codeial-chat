@@ -17,7 +17,7 @@ console.log(store.getState());
  * connect our App to store, for do this we need to Provide the store as props to <App />
  * using <Provider store={store}> </Provider> class which is imported form react-redux library.
  */
-const root = ReactDOM.render(
+ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<App />

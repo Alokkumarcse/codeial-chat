@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
 import { connect } from "react-redux";
 
@@ -9,20 +9,7 @@ import PorpsType from "prop-types";
 import { fetchPosts } from "../actions/posts";
 
 // importing component from separate file where all component exported
-import { PostsList, Navbar } from "./";
-
-// make some dummy component to test how Router works
-const Login = () => {
-	return <h1>Login</h1>;
-};
-
-const Signup = () => {
-	return <h1>SignUp</h1>;
-};
-
-const Home = () => {
-	return <h1>Home</h1>;
-};
+import { PostsList, Navbar, HomeDummy, SignupDummy, LoginDummy } from "./";
 
 class App extends React.Component {
 	// dispatch fetchPosts action, is a redux thunk to fetch data via making api call.
@@ -34,18 +21,25 @@ class App extends React.Component {
 	render() {
 		const { posts } = this.props;
 		return (
-			<Router>
-				<div>
-					<Navbar />
-					{/* adding route which is selected by router and render that component */}
-					<Route exact path="/" component={Home} />
-					<Route path="/signup" component={Signup} />
-					<Route path="/login" component={Login} />
+			<div>
+				<Router>
+					<div>
+						<Navbar />
+						<Link to="/"> Home </Link>
+						<Link to="/login"> Login </Link>
+						<Link to="/signup">Sing up</Link>
+						{/* adding route which is selected by router and render that component */}
+						<Route exact path="/" component={HomeDummy} />
+						<Route path="/signup" component={SignupDummy} />
+						<Route path="/login" component={LoginDummy} />
+						
+						<PostsList posts={posts} />
+						<PostsList Posts={posts} />
+					</div>
+				</Router>
 
-					<PostsList posts={posts} />
-					<PostsList Posts={posts} />
-				</div>
-			</Router>
+				<h2>This is the way to learn the React Router.</h2>
+			</div>
 		);
 	}
 }
