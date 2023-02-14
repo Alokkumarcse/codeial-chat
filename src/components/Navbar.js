@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
 	render() {
 		return (
 			<nav className="nav">
 				<div className="left-div">
-					<img
-						src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
-						alt="logo"
-					/>
+					<Link to="/">
+						<img
+							src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
+							alt="logo"
+						/>
+					</Link>
 				</div>
 				<div className="search-container">
 					<img
@@ -48,9 +51,9 @@ export default class Navbar extends Component {
 					</div>
 					<div className="nav-links">
 						<ul>
-							<li>Log in</li>
-							<li>Log out</li>
-							<li>Register</li>
+							<Link to="login">Log in</Link>
+							<Link to="logout">Log out</Link>
+							<Link to="register">Register</Link>
 						</ul>
 					</div>
 				</div>

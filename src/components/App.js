@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { connect } from "react-redux";
 
@@ -9,7 +9,7 @@ import PorpsType from "prop-types";
 import { fetchPosts } from "../actions/posts";
 
 // importing component from separate file where all component exported
-import { PostsList, Navbar, HomeDummy, SignupDummy, LoginDummy } from "./";
+import { PostsList, Navbar, Home, Login, Logout, Register, Page404 } from "./";
 
 class App extends React.Component {
 	// dispatch fetchPosts action, is a redux thunk to fetch data via making api call.
@@ -22,17 +22,52 @@ class App extends React.Component {
 		const { posts } = this.props;
 		return (
 			<div>
+				{/* Need to wrap all Routes inside <Router></Router> component */}
 				<Router>
 					<div>
 						<Navbar />
-						<Link to="/"> Home </Link>
-						<Link to="/login"> Login </Link>
-						<Link to="/signup">Sing up</Link>
-						{/* adding route which is selected by router and render that component */}
-						<Route exact path="/" component={HomeDummy} />
-						<Route path="/signup" component={SignupDummy} />
-						<Route path="/login" component={LoginDummy} />
-						
+						{/* adding route which is selected by router and render that component and pass some default props of Router
+						 * such history, Location , match etc props.
+						 * we need to pass default props using render method which is provided in
+						 */}
+
+						{/* Wrap all routes inside <switch></switch> component so that only first match of path is render */}
+						<Switch>
+							<Route
+								exact
+								path="/"
+								render={(props) => {
+									return <Home {...props} posts={posts} />;
+								}}
+							/>
+							<Route
+								path="/login"
+								render={(props) => {
+									return <Login {...props} posts={posts} />;
+								}}
+							/>
+
+							<Route
+								path="/logout"
+								render={(props) => {
+									return <Logout {...props} posts={posts} />;
+								}}
+							/>
+
+							<Route
+								path="/register"
+								render={(props) => {
+									return <Register {...props} posts={posts} />;
+								}}
+							/>
+
+							<Route
+								render={(props) => {
+									return <Page404 {...props} />;
+								}}
+							/>
+						</Switch>
+
 						<PostsList posts={posts} />
 						<PostsList Posts={posts} />
 					</div>
