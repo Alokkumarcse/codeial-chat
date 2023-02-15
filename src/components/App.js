@@ -67,11 +67,13 @@ class App extends React.Component {
 								}}
 							/>
 						</Switch>
-
-						<PostsList posts={posts} />
-						<PostsList Posts={posts} />
 					</div>
 				</Router>
+
+				{/* Render post list */}
+				{posts.map((post) => {
+					return <PostsList post={post} key={post.id} />;
+				})}
 
 				<h2>This is the way to learn the React Router.</h2>
 			</div>

@@ -11,11 +11,12 @@ import { UPDATE_POSTS } from "./actionType";
  */
 export function fetchPosts(){
   return function(dispatch){
-    const url ='https://jsonplaceholder.typicode.com/posts';
+    const url = "https://dummyjson.com/posts";
     fetch(url)
     .then((res) => res.json())
-    .then(data => {
-      dispatch(updatePosts([...data]));
+    .then((data) => {
+      console.log(data);
+      dispatch(updatePosts(data.posts));
     })
     .catch(err => console.log(err));
   }

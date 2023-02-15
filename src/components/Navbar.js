@@ -6,53 +6,52 @@ export default class Navbar extends Component {
 		return (
 			<nav className="nav">
 				<div className="left-div">
-					<Link to="/">
-						<img
-							src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
-							alt="logo"
-						/>
+					<Link to="/" style={{ textDecoration: "none" }}>
+						{/* <img src="⚛" alt="logo" /> */}
+						<span className="logo">⚛</span>
 					</Link>
 				</div>
 				<div className="search-container">
-					<img
-						className="search-icon"
-						// src="https://image.flaticon.com/icons/svg/483/483356.svg"
-						alt="search-icon"
-					/>
+					{/* <img className="search-icon" src="🔍" alt="search-icon" /> */}
+					<span className="search-icon">🔍</span>
 					<input placeholder="Search" />
 
 					<div className="search-results">
 						<ul>
 							<li className="search-results-row">
-								<img
-									// src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-									alt="user-dp"
-								/>
-								<span>John Doe</span>
+								{/* <img src=alt="user-dp" /> */}
+								<span> 📚 </span>
+								<span>John Wick</span>
 							</li>
 							<li className="search-results-row">
-								<img
-									// src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-									alt="user-dp"
-								/>
+								{/* <img src="🦸‍♂️" alt="user-dp" /> */}
+								<span>🦸‍♂️</span>
 								<span>John Doe</span>
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div className="right-nav">
-					<div className="user">
-						<img
-							// src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-							alt="user-dp"
-							id="user-dp"
-						/>
-						<span>John Doe</span>
+					<div
+						className="user"
+						style={{ display: "flex", alignItems: "center" }}
+					>
+						{/* <img src="" alt="user-dp" id="user-dp" /> */}
+						<span id="user-dp">😎</span>
+						<span>John Wick</span>
 					</div>
 					<div className="nav-links">
-						<ul>
-							<Link to="login">Log in</Link>
-							<Link to="logout">Log out</Link>
+						<ul
+							style={{
+								display: "flex",
+								alignItems: "center",
+								gap: 10,
+								textDecoration: "none",
+							}}
+						>
+							<Link to="/">Home</Link>
+							<Link to="login">Login</Link>
+							<Link to="logout">Logout</Link>
 							<Link to="register">Register</Link>
 						</ul>
 					</div>
