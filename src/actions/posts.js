@@ -3,6 +3,9 @@
  */
 import { UPDATE_POSTS } from "./actionType";
 
+/** import fetch post url to get post */
+import APIUrls from "../helpers/Urls";
+
 /**
  * action simply return an object if they return any function then they handle by redux middleware know as redux thunk.
  * fetchPosts() action creator.
@@ -11,7 +14,7 @@ import { UPDATE_POSTS } from "./actionType";
  */
 export function fetchPosts(){
   return function(dispatch){
-    const url = "https://dummyjson.com/posts";
+    const url = APIUrls.fetchPosts(0,10);
     fetch(url)
     .then((res) => res.json())
     .then((data) => {

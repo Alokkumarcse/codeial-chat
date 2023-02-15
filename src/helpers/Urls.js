@@ -1,7 +1,8 @@
 const rootAPI = "https://dummyjson.com/";
 
-const APIUrls = {
+export const APIUrls = {
 	login: () => `${rootAPI}/auth/login`,
+	signup: () => `${rootAPI}/auth/signup`,
 	fetchPosts: (page = 0, limit = 10) =>
-		`https://jsonplaceholder.typicode.com/posts?-page=${page}&limit=${limit}`,
+		`${rootAPI}posts?limit=${limit}&skip=${page}`,
 };
