@@ -9,7 +9,7 @@ import PorpsType from "prop-types";
 import { fetchPosts } from "../actions/posts";
 
 // importing component from separate file where all component exported
-import { PostsList, Navbar, Home, Login, Logout, Register, Page404 } from "./";
+import { Navbar, Home, Login, Logout, Register, Page404 } from "./";
 
 class App extends React.Component {
 	// dispatch fetchPosts action, is a redux thunk to fetch data via making api call.
@@ -28,7 +28,9 @@ class App extends React.Component {
 						<Navbar />
 						{/* adding route which is selected by router and render that component and pass some default props of Router
 						 * such history, Location , match etc props.
-						 * we need to pass default props using render method which is provided in
+						 * we need to pass default props using render(callback) method which is provided by react,
+						 * render() method take callback as argument where we render our component and pass as many as props
+						 * want to pass.
 						 */}
 
 						{/* Wrap all routes inside <switch></switch> component so that only first match of path is render */}
@@ -43,24 +45,21 @@ class App extends React.Component {
 							<Route
 								path="/login"
 								render={(props) => {
-									return <Login {...props} posts={posts} />;
+									return <Login {...props} />;
 								}}
 							/>
-
 							<Route
 								path="/logout"
 								render={(props) => {
-									return <Logout {...props} posts={posts} />;
+									return <Logout {...props} />;
 								}}
 							/>
-
 							<Route
 								path="/register"
 								render={(props) => {
 									return <Register {...props} posts={posts} />;
 								}}
 							/>
-
 							<Route
 								render={(props) => {
 									return <Page404 {...props} />;
@@ -69,13 +68,6 @@ class App extends React.Component {
 						</Switch>
 					</div>
 				</Router>
-
-				{/* Render post list */}
-				{posts.map((post) => {
-					return <PostsList post={post} key={post.id} />;
-				})}
-
-				<h2>This is the way to learn the React Router.</h2>
 			</div>
 		);
 	}

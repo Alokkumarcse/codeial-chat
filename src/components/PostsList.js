@@ -4,16 +4,14 @@ import PropsType from "prop-types";
 
 export default class PostsList extends Component {
 	render() {
-		const { posts } = this.props;
+		const { post } = this.props;
 		return (
 			<div className="posts-list">
 				<div className="post-wrapper" key={Math.random() * 1000}>
 					<div className="post-header">
 						<div className="post-avatar">
-							<img
-								// src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-								alt="user-pic"
-							/>
+							{/* <img src="" alt="user-pic" /> */}
+							<span>😊</span>
 							<div>
 								{/* <span className="post-author">{post.user.name}</span> */}
 								<span className="post-author">author</span>
@@ -23,17 +21,13 @@ export default class PostsList extends Component {
 						<div className="post-content">post content</div>
 						<div className="post-actions">
 							<div className="post-like">
-								<img
-									// src="https://image.flaticon.com/icons/svg/1077/1077035.svg"
-									alt="post-like"
-								/>
-								{/* <span>{post.likes.length}</span> */}
+								{/* <img src="" alt="post-like" /> */}
+								<span>❤ 23</span>
+								{/* <span>{posts.length}</span> */}
 							</div>
 							<div className="post-comments-icon">
-								<img
-									// src="https://image.flaticon.com/icons/svg/2462/2462719.svg"
-									alt="comments-icon"
-								/>
+								{/* <img src="" alt="comments-icon" /> */}
+								<span>📧</span>
 								{/* <span>{post.comments.length}</span> */}
 							</div>
 						</div>
