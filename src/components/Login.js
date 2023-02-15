@@ -42,7 +42,8 @@ class Login extends React.Component {
 	};
 
 	// form submit handler
-	handleFormSubmit = () => {
+	handleFormSubmit = (e) => {
+		e.preventDefault();
 		console.log(this.state);
 	};
 

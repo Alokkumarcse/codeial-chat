@@ -36,7 +36,8 @@ class Register extends React.Component {
 	};
 
 	// FUNCTION for handle form data submit
-	handleFormSubmit = () => {
+	handleFormSubmit = (e) => {
+		e.preventDefault();
 		// uncontrolled way to extract the form data
 		// console.log(this.userNameInputRef.current.value);
 		// console.log(this.emailInputRef.current.value);
