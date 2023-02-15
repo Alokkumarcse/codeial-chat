@@ -49,11 +49,12 @@ class Login extends React.Component {
 	render() {
 		return (
 			<div>
+				<h1>Login page</h1>
 				<form className="login-form">
 					<span className="login-signup-header">Log In</span>
 					<div className="field">
 						<input
-							type="text"
+							type="email"
 							placeholder="Email"
 							required
 							/* Part of uncontrolled component method */

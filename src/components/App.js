@@ -49,15 +49,15 @@ class App extends React.Component {
 								}}
 							/>
 							<Route
-								path="/logout"
+								path="/register"
 								render={(props) => {
-									return <Logout {...props} />;
+									return <Register {...props} />;
 								}}
 							/>
 							<Route
-								path="/register"
+								path="/logout"
 								render={(props) => {
-									return <Register {...props} posts={posts} />;
+									return <Logout {...props} />;
 								}}
 							/>
 							<Route
