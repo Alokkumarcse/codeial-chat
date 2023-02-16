@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default class Navbar extends Component {
+class Navbar extends Component {
 	render() {
+		console.log(this.props.auth);
+
 		return (
 			<nav className="nav">
 				<div className="left-div">
@@ -60,3 +63,11 @@ export default class Navbar extends Component {
 		);
 	}
 }
+
+function mapStateToProps(state) {
+	return {
+		auth: state.auth,
+	};
+}
+
+export default connect(mapStateToProps)(Navbar);

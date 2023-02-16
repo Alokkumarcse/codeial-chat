@@ -39,9 +39,10 @@ export function login(email, password) {
 			.then((data) => {
 				console.log(data);
 
-				if (data.success) {
+				if (data) {
 					// save the data in user property
-					dispatch(loginSuccess(data.data));
+					localStorage.setItem("token", data.token);
+					dispatch(loginSuccess(data));
 					return;
 				}
 				dispatch(loginFailed(data.message));

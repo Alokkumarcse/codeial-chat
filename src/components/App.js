@@ -8,6 +8,8 @@ import PorpsType from "prop-types";
 
 import { fetchPosts } from "../actions/posts";
 
+// import * as jwtDecode from "jwt-decode";
+
 // importing component from separate file where all component exported
 import { Navbar, Home, Login, Logout, Register, Page404 } from "./";
 
@@ -15,6 +17,12 @@ class App extends React.Component {
 	// dispatch fetchPosts action, is a redux thunk to fetch data via making api call.
 	componentDidMount() {
 		this.props.dispatch(fetchPosts());
+		// const token = localStorage.getItem("token");
+		// console.log(token);
+		// if (token) {
+		// 	const user = jwtDecode(token);
+		// 	console.log(user);
+		// }
 	}
 
 	/** Rendering our components here */
