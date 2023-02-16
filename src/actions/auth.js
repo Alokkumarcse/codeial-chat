@@ -37,10 +37,11 @@ export function login(email, password) {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log("data success");
+				console.log(data);
+
 				if (data.success) {
 					// save the data in user property
-					//dispatch(loginSuccess(data.data));
+					dispatch(loginSuccess(data.data));
 					return;
 				}
 				dispatch(loginFailed(data.message));
