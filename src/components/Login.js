@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { login } from "../actions/auth";
 
 class Login extends React.Component {
 	// uncontrolled form component i.e directly manipulate the dom or data flow managed by dom.
@@ -44,19 +46,24 @@ class Login extends React.Component {
 	// form submit handler
 	handleFormSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state);
+		const { email, password } = this.state;
+		if (email && password) {
+			this.props.dispatch(login(email, password));
+		}
 	};
 
 	render() {
+		const { error, inProgress } = this.props.auth;
 		return (
 			<div>
 				<h1>Login page</h1>
 				<form className="login-form">
 					<span className="login-signup-header">Log In</span>
+					{error && <div className="alert error-dailog"> {error} </div>}
 					<div className="field">
 						<input
-							type="email"
-							placeholder="Email"
+							type="text"
+							placeholder="Username"
 							required
 							/* Part of uncontrolled component method */
 							// ref={this.emailInputRef}
@@ -76,9 +83,19 @@ class Login extends React.Component {
 						/>
 					</div>
 					<div className="field">
-						<button type="submit" onClick={this.handleFormSubmit}>
-							Log In
-						</button>
+						{inProgress ? (
+							<button
+								type="submit"
+								onClick={this.handleFormSubmit}
+								disabled={inProgress}
+							>
+								Logging in...
+							</button>
+						) : (
+							<button type="submit" onClick={this.handleFormSubmit}>
+								Log In
+							</button>
+						)}
 					</div>
 				</form>
 			</div>
@@ -86,4 +103,10 @@ class Login extends React.Component {
 	}
 }
 
-export default Login;
+// connect Login component to redux store so that they access of state and dispatch methods of redux store as a props.
+function mapStateToProps(state) {
+	return {
+		auth: state.auth,
+	};
+}
+export default connect(mapStateToProps)(Login);
